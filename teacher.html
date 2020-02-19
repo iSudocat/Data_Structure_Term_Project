@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="Sudocat" content="Test Page">
+  <link rel="icon" href="img/favicon.ico">
+  <title>学生管理系统</title>
+
+  <!-- Core CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-table.min.css" rel="stylesheet">
+  <link href="css/alltable.css" rel="stylesheet">
+
+  <script>
+    function getCookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+      }
+      return "";
+    }
+
+    function jumptologin() {
+      window.location.href = "login.html"
+    }
+
+    function Prepare() {
+      var type = getCookie("type");
+      if (type == "teacher") {
+        document.getElementById("All").style.display = 'block';
+        let b = document.getElementById('successhf');
+        b.innerHTML = "<strong>欢迎您！</strong> 尊敬的" + getCookie("name") + "老师。"
+      } else if (type != "") {
+        document.getElementById("All").style.display = 'none';
+        document.getElementById("noaccess").style.display = 'block';
+        setTimeout("jumptologin()", 3000)
+      } else {
+        document.getElementById("All").style.display = 'none';
+        document.getElementById("nologin").style.display = 'block';
+        setTimeout("jumptologin()", 3000)
+      }
+
+    }
+  </script>
+
+</head>
+
+
+<body onload="Prepare()">
+
+  <div class="jumbotron text-center">
+    <h1>学生管理系统</h1>
+    <p>V0.0000001</p>
+  </div>
+
+  <div class="container" id="noaccess" style="display: none;">
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">无访问权限</h4>
+      <p>您当前登录的不是教师账户，无权访问此页面。请使用Teacher账户重新登录。</p>
+      <hr>
+      <p class="mb-0">3S后自动跳转至登录界面。</p>
+    </div>
+  </div>
+
+  <div class="container" id="nologin" style="display: none;">
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">无访问权限</h4>
+      <p>您还未登录系统！</p>
+      <hr>
+      <p class="mb-0">3S后自动跳转至登录界面。</p>
+    </div>
+  </div>
+
+  <div class="ContainerAll" id="All" style="display: none;">
+    <div class="container ">
+      <div class="row justify-content-end">
+        <div class="col-md-10 mr-auto">
+          <div id="successhf" class="alert alert-success">
+            <strong>欢迎您！</strong> 尊敬的???老师。
+          </div>
+        </div>
+        <div class="col-auto">
+          <button id="logout" type="button" class="btn btn-info btn-lg">注销</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            选择所教课程
+          </button>
+          <div id="dmenu" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <!--由js添加-->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="clearfix" style="margin-bottom: 10px;"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="bar" class="alert alert-primary">
+            及格率： 平均分：
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">学生姓名（可直接点击下方列表中的姓名进行选择）</span>
+            </div>
+            <input id="input_name" type="text" class="form-control" aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">成绩</span>
+            </div>
+            <input id="input_score" type="text" class="form-control" aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button id="fixgrade" class="btn btn-success">
+            <h class="glyphicon glyphicon-remove">添加/修改分数</h>
+          </button>
+
+        </div>
+        <div class="col-md-auto">
+
+          <button id="ex" class="btn btn-danger">
+            <h class="glyphicon glyphicon-remove">导出</h>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="clearfix" style="margin-bottom: 10px;"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+
+          <table id="table" data-pagination="true" data-page-list="[10, 25, 50, 100, all]" data-show-footer="false"
+            data-page-size="10">
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first -->
+  <script src="js/Core/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script src="js/Core/popper.min.js" crossorigin="anonymous"></script>
+  <script src="js/Core/bootstrap.js" crossorigin="anonymous"></script>
+  <script src="js/Core/tableExport.min.js" crossorigin="anonymous"></script>
+  <script src="js/Core/bootstrap-table.min.js" crossorigin="anonymous"></script>
+  <script src="js/Core/bootstrap-table-locale-all.min.js" crossorigin="anonymous"></script>
+  <script src="js/Core/bootstrap-table-export.min.js" crossorigin="anonymous"></script>
+  <script src="libs/js-xlsx/xlsx.core.min.js" crossorigin="anonymous"></script>
+  <script src="js/Core/cos-js-sdk-v5.min.js" crossorigin="anonymous"></script>
+  <script src="js/LinkedList.js" crossorigin="anonymous"></script>
+  <script src="js/teacher.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

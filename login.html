@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="Sudocat" content="Test Page">
+    <link rel="icon" href="img/favicon.ico">
+    <title>学生管理系统</title>
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="//code.z01.com/v4/dist/css/bootstrap.min.css">
+
+    <style>
+        img {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="jumbotron text-center">
+        <h1>学生管理系统</h1>
+        <p>V0.0000001</p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <img src="img/login.png" alt="" width="180" height="180">
+                <div class="alert alert-danger alert-dismissible fade show" style="display:none" id="error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>用户名或密码错误！</strong>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input1">
+                        <span class="input-group-text">用户名</span>
+                    </div>
+                    <input type="text" id="input-username" class="form-control" placeholder="学号/工号">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input2">
+                        <span class="input-group-text">&nbsp;&nbsp;密码&nbsp;&nbsp;</span>
+                    </div>
+                    <input type="password" id="input-password" class="form-control" placeholder="">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" onclick="loginFun()">登录</button>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first -->
+    <script src="js/Core/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="js/Core/popper.min.js" crossorigin="anonymous"></script>
+    <script src="js/Core/bootstrap.js" crossorigin="anonymous"></script>
+    <script src="js/Core/cos-js-sdk-v5.min.js" crossorigin="anonymous"></script>
+    <script src="js/login.js" crossorigin="anonymous"></script>
+
+</body>
+
+
+
+</html>
